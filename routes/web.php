@@ -44,14 +44,26 @@ Route::get(
     [AdminDashboardController::class, 'index']
 )->middleware('role:admin');
 
+/* Doctor Routes*/
 Route::get(
     '/doctor_dashboard',
     [DoctorDashboardController::class, 'index']
 )->middleware('role:doctor');
 
 Route::get(
-    '/doctor_profile', [Controller::class, 'showDoctor']
-    );
+    '/doctor_profile',
+    [DoctorDashboardController::class, 'my_profile']
+)->middleware('role:doctor')->name('doctor_profile');
+
+#edit_doctor
+Route::get(
+    '/edit_doctor/{doctor}', 
+    [DoctorDashboardController::class, 'edit_doctor']
+)->middleware('role:doctor')->name('edit_doctor');
+
+Route::post('/store_profile', [DoctorDashboardController::class, 'store_profile']
+)->middleware('role:doctor')->name('save_doctor');
+/* /Doctor Routes*/
 
 
 Route::get(

@@ -11,8 +11,8 @@
         <div class="d-flex justify-content-between align-items-center">
           <h2>Doctor Profile</h2>
           <ol>
-            <li><a href="#">Home</a></li>
-            <li>Doctor Profile</li>
+            <li><a href="#">Dashboard</a></li>
+            <li>My Profile</li>
           </ol>
         </div>
 
@@ -24,7 +24,7 @@
       <div class="container">
 
         <div class="row gy-4">
-
+        @if  (!empty($doctor)) {
           <div class="col-lg-7">
             <img src="{{ asset('img/team/team-1.jpg') }}" alt="">
           </div>
@@ -32,7 +32,7 @@
           <div class="col-lg-5">
             <div class="portfolio-info">
             
-              <h3>Dr. Mustapha Muhammad</h3>
+              <h3>Dr. Mustapha Muhammad </h3>
               <ul>
                 <li><strong>Specialization</strong>: Family Medicine</li>
                 <li><strong>MDCN Number</strong>: 458796</li>
@@ -69,7 +69,8 @@
           
             </div>
           </div>
-
+          @endif
+          <div>Your Profile is Incomplete. Click <a href="{{ url('edit_doctor/'. Auth::user()->id) }}">Here</a> to setup your Profile</div>
         </div>
 
       </div>

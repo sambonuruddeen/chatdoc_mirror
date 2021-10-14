@@ -1,4 +1,5 @@
 <!-- ======= Top Bar ======= -->
+
 <section id="topbar" class="d-flex align-items-center">
     <div class="container d-flex justify-content-center justify-content-md-between">
       <div class="contact-info d-flex align-items-center">
@@ -17,6 +18,7 @@
       </div> -->
     </div>
   </section>
+  
 
   <!-- ======= Header ======= -->
   <header id="header" class="d-flex align-items-center" style="border-bottom: 1px ridge #ece5e5;">

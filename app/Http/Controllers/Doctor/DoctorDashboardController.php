@@ -34,7 +34,9 @@ class DoctorDashboardController extends Controller
 
       public function edit_doctor($doctor)
       {
-        return view('doctor.profile_edit',['doc'=>$doctor]);
+
+        $doc = Doctor::where('user_id', $doctor)->first();
+        return view('doctor.profile_edit',['doc'=>$doc]);
         #return view('doctor.profile_edit', [
          # 'doctor' => Doctor::findOrFail($id)
       #]);
@@ -65,6 +67,34 @@ class DoctorDashboardController extends Controller
         return redirect('/doctor_profile');
 
 
+      }
+
+      public function update(Request $request)
+      {
+          //
+          $request->validate([
+            'user_id' => ['required', 'int'],
+            'biography' => ['string'],
+            'specialization' => ['required', 'string', 'max:255'],
+            'license_type' => ['required', 'string'],
+            'license_number' => ['required', 'string'],
+            'languages' => ['required', 'string', 'max:255'],
+            'rate' => ['required', 'int'],
+          ]);
+  
+          #$doctor = Doctor::where('user_id', '=', $request->user_id)->first();
+          #$doctor->update($request->all());
+          $doctor = Doctor::where('user_id', $request->user_id)->update([
+            'user_id' => $request->user_id,
+            'biography' => $request->biography,
+            'specialization' => $request->specialization,
+            'license_type' => $request->license_type,
+            'license_number' => $request->license_number,
+            'languages' => $request->languages,
+            'rate' => $request->rate,
+          ]);
+
+          return redirect('/doctor_profile');
       }
     
 }

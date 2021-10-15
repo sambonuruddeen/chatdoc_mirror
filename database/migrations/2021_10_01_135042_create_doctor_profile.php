@@ -14,7 +14,7 @@ class CreateDoctorProfile extends Migration
     public function up()
     {
         Schema::create('doctor_profile', function (Blueprint $table) {
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->constrained('users');
             $table->text('biography');
             $table->string('specialization');
             $table->string('license_type');

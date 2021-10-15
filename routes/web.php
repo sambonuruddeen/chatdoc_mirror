@@ -63,6 +63,9 @@ Route::get(
 
 Route::post('/store_profile', [DoctorDashboardController::class, 'store_profile']
 )->middleware('role:doctor')->name('save_doctor');
+
+Route::post('/update_profile', [DoctorDashboardController::class, 'update']
+)->middleware('role:doctor')->name('update_doctor');
 /* /Doctor Routes*/
 
 

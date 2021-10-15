@@ -36,33 +36,37 @@
 
           <div class="col-lg-5 mt-4 mt-lg-0 d-flex align-items-center" style="margin: 0 auto;">
           
-            <form method="POST" action="{{ route('save_doctor') }}" class="my_form">
-            @csrf
+          @if(isset($doc))
+          <form method="POST" action="{{ route('update_doctor') }}" class="my_form">
+          @else
+          <form method="POST" action="{{ route('save_doctor') }}" class="my_form">
+          @endif
+          @csrf
               <div class="row">
                 
               <div class="form-group mt-3">
                 <label for="name">Specialization</label>
-                <input type="text" class="form-control" name="specialization" id="specialization" value="{{ old('specialization') }}" required autofocus />
+                <input type="text" class="form-control" name="specialization" id="specialization" value="{{ old('specialization', $doc->specialization) }}" required autofocus />
               </div>
               <div class="form-group mt-3">
                 <label for="name">License Type</label>
-                <input type="text" class="form-control" name="license_type" id="license_type" value="{{ old('license_type') }}" required />
+                <input type="text" class="form-control" name="license_type" id="license_type" value="{{ old('license_type', $doc->license_type) }}" required />
               </div>
               <div class="form-group mt-3">
                 <label for="name">License Number</label>
-                <input type="text" class="form-control" name="license_number" id="license_number" value="{{ old('license_number') }}" required />
+                <input type="text" class="form-control" name="license_number" id="license_number" value="{{ old('license_number', $doc->license_number) }}" required />
               </div>
               <div class="form-group mt-3">
                 <label for="name">Languages</label>
-                <input type="text" class="form-control" name="languages" id="languages" required placeholder="English, Hausa" />
+                <input type="text" class="form-control" name="languages" id="languages" value="{{ old('languages', $doc->languages) }}" required placeholder="English, Hausa" />
               </div>
               <div class="form-group mt-3">
                 <label for="name">Rate <small>(Naira)</small></label>
-                <input type="text" class="form-control" name="rate" id="rate" placeholder="1000" required />
+                <input type="text" class="form-control" name="rate" id="rate" value="{{ old('rate', $doc->rate) }}" placeholder="1000" required />
               </div>
               <div class="form-group mt-3">
                 <label for="name">Biography</label>
-                <textarea class="form-control" name="biography" id="biography"></textarea>
+                <textarea class="form-control" name="biography" id="biography">{{ old('biography', $doc->biography) }}</textarea>
               </div>
               <div>
                 &nbsp;

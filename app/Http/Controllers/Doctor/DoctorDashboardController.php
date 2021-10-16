@@ -52,6 +52,9 @@ class DoctorDashboardController extends Controller
           'license_number' => ['required', 'string'],
           'languages' => ['required', 'string', 'max:255'],
           'rate' => ['required', 'int'],
+          'twitter' => ['max:255'],
+          'facebook' => [ 'max:255'],
+          'linkedin' => [ 'max:255'],
         ]);
 
         $doctor = Doctor::create([
@@ -62,9 +65,12 @@ class DoctorDashboardController extends Controller
           'license_number' => $request->license_number,
           'languages' => $request->languages,
           'rate' => $request->rate,
+          'twitter' => $request->twitter,
+          'facebook' => $request->facebook,
+          'linkedin' => $request->linkedin,
         ]);
         #print_r($request->languages);
-        return redirect('/doctor_profile');
+        return redirect('/doctor_profile')->with('status', 'Profile updated!');
 
 
       }
@@ -80,6 +86,9 @@ class DoctorDashboardController extends Controller
             'license_number' => ['required', 'string'],
             'languages' => ['required', 'string', 'max:255'],
             'rate' => ['required', 'int'],
+            'twitter' => ['max:255'],
+            'facebook' => ['max:255'],
+            'linkedin' => ['max:255'],
           ]);
   
           #$doctor = Doctor::where('user_id', '=', $request->user_id)->first();
@@ -92,9 +101,14 @@ class DoctorDashboardController extends Controller
             'license_number' => $request->license_number,
             'languages' => $request->languages,
             'rate' => $request->rate,
+            'twitter' => $request->twitter,
+            'facebook' => $request->facebook,
+            'linkedin' => $request->linkedin,
           ]);
 
-          return redirect('/doctor_profile');
+          
+          #return back()->with('status','Profile updated!');
+          return redirect('/doctor_profile')->with('status', 'Profile updated!');
       }
     
 }

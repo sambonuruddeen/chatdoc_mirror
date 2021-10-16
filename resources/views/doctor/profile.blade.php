@@ -22,23 +22,28 @@
     <!-- ======= Portfolio Details Section ======= -->
     <section id="portfolio-details" class="portfolio-details">
       <div class="container">
+      @if (session('status'))
+    <div class="alert alert-success">
+        {{ session('status') }}
+    </div>
+@endif
 
         <div class="row gy-4">
         @if  (!empty($doctor)) 
           <div class="col-lg-7">
             <img src="{{ asset('img/team/team-1.jpg') }}" alt="">
-  
-            <div class="text-center">
-              <hr />
-                          <a href="#"><i class="bi bi-person"></i> Change Profile Picture</a> -
-                          <a href="{{ url('edit_doctor/'. Auth::user()->id) }}"><i class="bi bi-pen"></i> Edit Profile</a>
-                      </div>
+           
+            
           </div>
 
           <div class="col-lg-5">
             <div class="portfolio-info">
-            
-              <h3>Dr. Mustapha Muhammad </h3>
+            <div class="text-center">
+                          <a href="#"><i class="bi bi-person"></i> Change Profile Picture</a> -
+                          <a href="{{ url('edit_doctor/'. Auth::user()->id) }}"><i class="bi bi-pen"></i> Edit Profile</a>
+                          <hr />                          
+                      </div>
+              <h3>Dr. {{ Auth::user()->name}}</h3>
               <ul>
                 <li><strong>Specialization</strong>: {{ $doctor->specialization }} </li>
                 <li><strong>license Type</strong>: {{ $doctor->license_type }}</li>
@@ -54,10 +59,9 @@
               {{ $doctor->biography }}
             </p>
             
-            <a href=""><i class="bi bi-twitter"></i></a>
-                <a href=""><i class="bi bi-facebook"></i></a>
-                <a href=""><i class="bi bi-instagram"></i></a>
-                <a href=""><i class="bi bi-linkedin"></i></a>
+                <a href=" {{ $doctor->twitter }}"><i class="bi bi-twitter"></i></a>
+                <a href=" {{ $doctor->facebook }}"><i class="bi bi-facebook"></i></a>
+                <a href=" {{ $doctor->linkedin }}"><i class="bi bi-linkedin"></i></a>
               </div>
             </div>
             <hr />
@@ -80,6 +84,7 @@
 
           
             </div>
+            
           </div>
           @else
           <div>Your Profile is Incomplete. Click <a href="{{ url('edit_doctor/'. Auth::user()->id) }}">Here</a> to setup your Profile</div>

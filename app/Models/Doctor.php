@@ -20,6 +20,13 @@ class Doctor extends Model
         'license_number',
         'languages',
         'rate',
+        
+
+    ];
+    protected $nullable = [
+        'twitter',
+        'facebook',
+        'linkedin',
 
     ];
 

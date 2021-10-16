@@ -22,7 +22,7 @@
     <!-- ======= Portfolio Details Section ======= -->
     <section id="portfolio-details" class="portfolio-details">
       <div class="container">
-
+      
         <div class="row gy-4">
 
           <div class="col-lg-7">

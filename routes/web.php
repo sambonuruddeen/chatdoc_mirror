@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Doctor\DoctorDashboardController;
+use App\Http\Controllers\Patient\PatientDashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -66,12 +67,14 @@ Route::post('/store_profile', [DoctorDashboardController::class, 'store_profile'
 
 Route::post('/update_profile', [DoctorDashboardController::class, 'update']
 )->middleware('role:doctor')->name('update_doctor');
+
+Route::put('/updateAvatar', [ DoctorDashboardController::class, 'updateAvatar']
+)->middleware('role:doctor')->name('updateAvatar');
 /* /Doctor Routes*/
 
 
 Route::get(
-    '/patient_dashboard',
-    [DoctorDashboardController::class, 'index']
+    '/patient_dashboard', [PatientDashboardController::class, 'index']
 )->middleware('role:patient');
 
 #Route::get('/doctor_dashboard', 'Doctor\DashboardController@index');

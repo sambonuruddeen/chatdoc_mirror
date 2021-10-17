@@ -21,9 +21,10 @@ class CreateDoctorProfile extends Migration
             $table->string('license_number');
             $table->string('languages');
             $table->float('rate');
-            $table->string('twitter')->nullable();;
-            $table->string('facebook')->nullable();;
-            $table->string('linkedin')->nullable();;
+            $table->string('twitter')->nullable();
+            $table->string('facebook')->nullable();
+            $table->string('linkedin')->nullable();
+            $table->string('avatar')->nullable();
             $table->timestamps();
         });
     }

@@ -7,6 +7,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use App\Models\Doctor;
 
+
 class DoctorDashboardController extends Controller
 {
     //
@@ -110,5 +111,23 @@ class DoctorDashboardController extends Controller
           #return back()->with('status','Profile updated!');
           return redirect('/doctor_profile')->with('status', 'Profile updated!');
       }
+
+      public function updateAvatar(Request $request)
+    {
+      $this->validate($request, [
+       
+        'avatar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+    ]);
+
+      $imageName = time().'.'.$request->avatar->getClientOriginalExtension();
+      
+      $request->avatar->move(public_path('/avatar'), $imageName);
+
+      $doctor = Doctor::where('user_id', $request->user_id)->update([
+        'avatar' => $imageName
+      ]);
+      
+      return redirect('/doctor_profile')->with('status', 'Profile picture updated!');
+    }
     
 }

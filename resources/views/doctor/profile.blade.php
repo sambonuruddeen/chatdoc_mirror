@@ -31,18 +31,30 @@
         <div class="row gy-4">
         @if  (!empty($doctor)) 
           <div class="col-lg-7">
-            <img src="{{ asset('img/team/team-1.jpg') }}" alt="">
-           
             
-          </div>
+            <img src="{{ asset('avatar/'.$doctor['avatar']) }}" width="600px" height="600px" alt="">
+            <br />
+            <div class="row">
+            <form action="{{ route('updateAvatar') }}" method="post" class="form-group" enctype="multipart/form-data">
+            @csrf
+            @method('PUT')
 
+            <table>
+            <tr>
+              <td><label><i class="bi bi-image"></i> Change Profile Picture:</label> </td>
+              <input type="hidden" name="user_id" value="{{ Auth::user()->id }}" />
+              <td>&nbsp;<input type="file" name="avatar" onchange="form.submit()" class="form-control-file" /></td>
+            </tr>
+            </table>
+            </form>
+
+            </div>
+
+          </div>
+          
           <div class="col-lg-5">
             <div class="portfolio-info">
-            <div class="text-center">
-                          <a href="#"><i class="bi bi-person"></i> Change Profile Picture</a> -
-                          <a href="{{ url('edit_doctor/'. Auth::user()->id) }}"><i class="bi bi-pen"></i> Edit Profile</a>
-                          <hr />                          
-                      </div>
+            
               <h3>Dr. {{ Auth::user()->name}}</h3>
               <ul>
                 <li><strong>Specialization</strong>: {{ $doctor->specialization }} </li>
@@ -63,6 +75,9 @@
                 <a href=" {{ $doctor->facebook }}"><i class="bi bi-facebook"></i></a>
                 <a href=" {{ $doctor->linkedin }}"><i class="bi bi-linkedin"></i></a>
               </div>
+                          
+              <a href="{{ url('edit_doctor/'. Auth::user()->id) }}"><i class="bi bi-pen"></i> Edit Profile</a>
+                         
             </div>
             <hr />
             <div class="portfolio-description">

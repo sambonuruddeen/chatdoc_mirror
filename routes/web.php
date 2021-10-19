@@ -70,6 +70,9 @@ Route::post('/update_profile', [DoctorDashboardController::class, 'update']
 
 Route::put('/updateAvatar', [ DoctorDashboardController::class, 'updateAvatar']
 )->middleware('role:doctor')->name('updateAvatar');
+
+Route::get('/doctorSchedule', function () {
+    return view('doctor.schedule');})->name('doctorSchedule');
 /* /Doctor Routes*/
 
 

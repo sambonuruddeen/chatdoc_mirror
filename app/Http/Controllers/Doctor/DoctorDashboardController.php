@@ -129,5 +129,7 @@ class DoctorDashboardController extends Controller
       
       return redirect('/doctor_profile')->with('status', 'Profile picture updated!');
     }
+
+    
     
 }

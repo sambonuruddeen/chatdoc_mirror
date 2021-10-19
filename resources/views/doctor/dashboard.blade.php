@@ -12,7 +12,7 @@
         <div class="d-flex justify-content-between align-items-center">
           <h2>Doctor Dashboard</h2>
           <ol>
-            <li><a href="#">{{ Auth::user()->name }}</a></li>
+            <li><a href="{{ url('doctor_dashboard') }}">{{ Auth::user()->name }}</a></li>
             <li>Dashboard</li>
           </ol>
         </div>
@@ -37,7 +37,7 @@
           <div class="col-lg-3 col-md-6">
             <div class="icon-box text-center">
               <div class="icon"><i class="bi bi-calendar-event"></i></div>
-              <h4 class="title"><a href="">My Schedule</a></h4>
+              <h4 class="title"><a href="{{ route('doctorSchedule') }}">My Schedule</a></h4>
               
             </div>
           </div>

@@ -11,7 +11,7 @@
         <div class="d-flex justify-content-between align-items-center">
           <h2>Doctor Profile</h2>
           <ol>
-            <li><a href="#">Dashboard</a></li>
+            <li><a href="{{ url('doctor_dashboard') }}">Dashboard</a></li>
             <li>My Profile</li>
           </ol>
         </div>

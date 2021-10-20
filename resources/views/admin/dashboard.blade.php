@@ -30,14 +30,14 @@
         <div class="row no-gutters">
           <div class="col-lg-3 col-md-6">
             <div class="icon-box text-center">
-              <div class="icon"><i class="bi bi-pen"></i></div>
+              <div class="icon"><i class="bi bi-people"></i></div>
               <h4 class="title"><a href="">Patients Management</a></h4>
               
             </div>
           </div>
           <div class="col-lg-3 col-md-6">
             <div class="icon-box text-center">
-              <div class="icon"><i class="bi bi-briefcase"></i></div>
+              <div class="icon"><i class="bi bi-person-circle"></i></div>
               <h4 class="title"><a href="">Doctors Management</a></h4>
               
             </div>

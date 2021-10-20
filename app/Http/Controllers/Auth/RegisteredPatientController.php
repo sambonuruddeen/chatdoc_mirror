@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 
-class RegisteredUserController extends Controller
+class RegisteredPatientController extends Controller
 {
     /**
      * Display the registration view.
@@ -20,7 +20,7 @@ class RegisteredUserController extends Controller
      */
     public function create()
     {
-        return view('auth.register');
+        return view('auth.patient-register');
     }
 
     /**
@@ -37,30 +37,20 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            //'role' => ['required', 'string', 'max:255', Rules\Role::defaults()],
+            'role' => ['required', 'string', 'max:255'],
         ]);
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'role' => $request->role,
+            'role' => 'patient',
         ]);
 
         event(new Registered($user));
 
         Auth::login($user);
 
-        if($request->role == 'admin') {
-            return redirect(RouteServiceProvider::ADMIN);    
-        }
-        elseif($request->role == 'doctor') {
-            return redirect(RouteServiceProvider::DOCTOR);
-        }
-        elseif($request->role == 'patient') {
-            return redirect(RouteServiceProvider::PATIENT);
-        }
-
-        #return redirect(RouteServiceProvider::HOME);
+        return redirect(RouteServiceProvider::HOME);
     }
 }

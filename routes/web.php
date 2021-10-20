@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Doctor\DoctorDashboardController;
+use App\Http\Controllers\Patient\PatientDashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,19 +45,39 @@ Route::get(
     [AdminDashboardController::class, 'index']
 )->middleware('role:admin');
 
+/* Doctor Routes*/
 Route::get(
     '/doctor_dashboard',
     [DoctorDashboardController::class, 'index']
 )->middleware('role:doctor');
 
 Route::get(
-    '/doctor_profile', [Controller::class, 'showDoctor']
-    );
+    '/doctor_profile',
+    [DoctorDashboardController::class, 'my_profile']
+)->middleware('role:doctor')->name('doctor_profile');
+
+#edit_doctor
+Route::get(
+    '/edit_doctor/{doctor}', 
+    [DoctorDashboardController::class, 'edit_doctor']
+)->middleware('role:doctor')->name('edit_doctor');
+
+Route::post('/store_profile', [DoctorDashboardController::class, 'store_profile']
+)->middleware('role:doctor')->name('save_doctor');
+
+Route::post('/update_profile', [DoctorDashboardController::class, 'update']
+)->middleware('role:doctor')->name('update_doctor');
+
+Route::put('/updateAvatar', [ DoctorDashboardController::class, 'updateAvatar']
+)->middleware('role:doctor')->name('updateAvatar');
+
+Route::get('/doctorSchedule', function () {
+    return view('doctor.schedule');})->name('doctorSchedule');
+/* /Doctor Routes*/
 
 
 Route::get(
-    '/patient_dashboard',
-    [DoctorDashboardController::class, 'index']
+    '/patient_dashboard', [PatientDashboardController::class, 'index']
 )->middleware('role:patient');
 
 #Route::get('/doctor_dashboard', 'Doctor\DashboardController@index');

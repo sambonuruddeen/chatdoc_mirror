@@ -11,7 +11,7 @@
         <div class="d-flex justify-content-between align-items-center">
           <h2>Doctor Profile</h2>
           <ol>
-            <li><a href="index.html">Home</a></li>
+            <li><a href="#">Home</a></li>
             <li>Doctor Profile</li>
           </ol>
         </div>
@@ -22,7 +22,7 @@
     <!-- ======= Portfolio Details Section ======= -->
     <section id="portfolio-details" class="portfolio-details">
       <div class="container">
-
+      
         <div class="row gy-4">
 
           <div class="col-lg-7">
